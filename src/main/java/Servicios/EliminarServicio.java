@@ -56,48 +56,4 @@ public class EliminarServicio {
             }
         }
     }
-
-    /**
-     * Elimina un club llamando a la API correspondiente.
-     * <p>
-     * Envía una solicitud HTTP DELETE al endpoint de la API para eliminar
-     * un club con el ID especificado. Retorna un mensaje de resultado
-     * dependiendo de la respuesta de la API.
-     * </p>
-     * 
-     * @param idClub el ID del club que se desea eliminar.
-     * @return un mensaje indicando el resultado de la operación.
-     */
-    public String eliminarClub(long idClub) {
-        HttpURLConnection connection = null;
-
-        try {
-            // Construir la URL para la solicitud DELETE
-            URL url = new URL("http://localhost:8081/api/eliminar/club/" + idClub);
-
-            // Abrir la conexión
-            connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("DELETE");
-            connection.setConnectTimeout(5000); // Tiempo de espera para conexión
-            connection.setReadTimeout(5000); // Tiempo de espera para lectura
-
-            // Verificar el código de respuesta
-            int responseCode = connection.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_NO_CONTENT) { // 204 No Content
-                return "Club eliminado exitosamente.";
-            } else if (responseCode == HttpURLConnection.HTTP_NOT_FOUND) { // 404 Not Found
-                return "Club no encontrado.";
-            } else {
-                return "Error al eliminar el club. Código de respuesta: " + responseCode;
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            return "Error al conectar con la API: " + e.getMessage();
-        } finally {
-            if (connection != null) {
-                connection.disconnect();
-            }
-        }
-    }
 }
