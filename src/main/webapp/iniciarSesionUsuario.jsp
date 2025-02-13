@@ -6,8 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión Usuario</title>
+    
     <!-- Enlace a estilos CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/iniciarsesionysuscripcion.css">
     <link rel="stylesheet" 
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" 
@@ -21,6 +22,11 @@
 </head>
 <body>
     <div class="container" style="width: 400px; margin-top: 50px;">
+    	<!-- Imágen del logo -->
+    	<div class="text-center mt-3">
+            <img width="148" height="118" src="imagenes/logo.png" alt="Logo Fuun" class="img-fluid">
+        </div>
+        
         <h3 class="text-center mb-4"><b>Iniciar Sesión Usuario</b></h3>
 
         <!-- Formulario de inicio de sesión -->
@@ -41,7 +47,7 @@
 
         <!-- Enlaces adicionales -->
         <div class="text-center mt-3">
-            <p>¿Todavia no estas registrado? <a href="registrarseUsuario.jsp">Registrarse</a></p>
+            <p>¿No estas suscrito? <a href="registrarseUsuario.jsp">Suscribete ya</a></p>
             <p><a href="index.jsp">Volver al menú</a></p>
         </div>
 

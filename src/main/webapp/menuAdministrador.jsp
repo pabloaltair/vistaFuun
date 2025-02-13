@@ -35,7 +35,7 @@
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
        <div class="container-fluid">
            <a class="navbar-brand" href="#">
-               <img src="imagenes/logo moto.jpg" alt="Yamaha Logo" width="100" height="50">
+               <img src="imagenes/logo.png" alt="Yamaha Logo" width="100" height="50">
            </a>
            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
@@ -46,10 +46,7 @@
                <ul class="navbar-nav">
                    <li class="nav-item"><a class="nav-link" href="index.jsp">Inicio</a></li>
                    <li class="nav-item"><a class="nav-link" href="#">Nosotros</a></li>
-                   <li class="nav-item"><a class="nav-link" href="#">Eventos</a></li>
                    <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
-                   <li class="nav-item"><a class="nav-link" href="#">Rutas</a></li>
-                   <li class="nav-item"><a class="nav-link" href="#">Sedes</a></li>
                </ul>
            </div>
        </div>
@@ -64,13 +61,7 @@
                        <button class="btn btn-link nav-link" onclick="mostrarSeccion('modificarUsuario')">Modificar Usuario</button>
                    </li>
                    <li class="nav-item">
-                       <button class="btn btn-link nav-link" onclick="mostrarSeccion('modificarClub')">Modificar Club</button>
-                   </li>
-                   <li class="nav-item">
                        <button class="btn btn-link nav-link" onclick="mostrarSeccion('eliminarUsuario')">Eliminar Usuario</button>
-                   </li>
-                   <li class="nav-item">
-                       <button class="btn btn-link nav-link" onclick="mostrarSeccion('eliminarClub')">Eliminar Club</button>
                    </li>
                </ul>
            </div>
@@ -91,21 +82,7 @@
                        <button type="submit" class="btn btn-primary mt-3">Modificar Usuario</button>
                    </form>
                </div>
-               <!-- Sección: Modificar Club -->
-               <div id="modificarClub" class="seccion" style="display: none;">
-                   <h2>Modificar Club</h2>
-                   <form action="modificarClub" method="post" enctype="multipart/form-data">
-                       <label for="idClub">ID Club:</label>
-                       <input type="number" id="idClub" name="idClub" required>
-                       <label for="nuevoNombre">Nuevo Nombre:</label>
-                       <input type="text" id="nuevoNombre" name="nuevoNombre">
-                       <label for="nuevaSede">Nueva Sede:</label>
-                       <input type="text" id="nuevaSede" name="nuevaSede">
-                       <label for="nuevaFoto">Nueva Foto:</label>
-                       <input type="file" id="nuevaFoto" name="nuevaFoto" accept="image/*">
-                       <button type="submit" class="btn btn-primary mt-3">Modificar Club</button>
-                   </form>
-               </div>
+               
                <!-- Sección: Eliminar Usuario -->
                <div id="eliminarUsuario" class="seccion" style="display: none;">
                    <h2>Eliminar Usuario</h2>
@@ -115,15 +92,7 @@
                        <button type="submit" class="btn btn-danger mt-3">Eliminar Usuario</button>
                    </form>
                </div>
-               <!-- Sección: Eliminar Club -->
-               <div id="eliminarClub" class="seccion" style="display: none;">
-                   <h2>Eliminar Club</h2>
-                   <form action="eliminarClub" method="post">
-                       <label for="idClub">ID Club:</label>
-                       <input type="number" id="idClub" name="idClub" required>
-                       <button type="submit" class="btn btn-danger mt-3">Eliminar Club</button>
-                   </form>
-               </div>
+              
                <!-- Contenedor de resultados -->
                <div class="mt-4">
                    <h3>Resultado:</h3>

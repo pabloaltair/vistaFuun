@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dar de Alta Usuario</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/iniciarsesionysuscripcion.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
@@ -18,24 +18,22 @@
 
 <body>
     <div class="container" style="max-width: 400px; margin-top: 50px;">
+    
+    	<!-- Imágen del logo -->
+    	<div class="text-center mt-3">
+            <img width="148" height="118" src="imagenes/logo.png" alt="Logo Fuun" class="img-fluid">
+        </div>
+        
         <h3 class="text-center mb-4"><b>Alta de Usuario</b></h3>
 
         <!-- Formulario de registro -->
         <form id="registerUserForm" action="registroUsuario" method="POST"> 
-        	<!-- Nickname de usuario -->
-            <div class="mb-3">
-                <input type="text" id="nicknameUsuario" name="nicknameUsuario" class="form-control" placeholder="Introduzca su nickname" required>
-            </div>
-            
+
             <!-- Nombre de usuario -->
             <div class="mb-3">
                 <input type="text" id="nombreUsuario" name="nombreUsuario" class="form-control" placeholder="Introduzca su nombre" required>
             </div>
             
-            <!-- DNI de usuario -->
-            <div class="mb-3">
-                <input type="text" id="dniUsuario" name="dniUsuario" class="form-control" placeholder="Introduzca su DNI" required>
-            </div>
             
             <!-- Telefono de usuario -->
             <div class="mb-3">
