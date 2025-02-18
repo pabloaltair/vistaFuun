@@ -27,7 +27,7 @@
             <img width="148" height="118" src="imagenes/logo.png" alt="Logo Fuun" class="img-fluid">
         </div>
         
-        <h3 class="text-center mb-4"><b>Iniciar Sesión Usuario</b></h3>
+        <h3 class="text-center mb-4"><b>Recuperación Correo</b></h3>
 
         <!-- Formulario de inicio de sesión -->
         <form id="loginUserForm" action="loginUsuario" method="post">
@@ -36,23 +36,15 @@
                 <input type="text" id="email" name="email" class="form-control" placeholder="Introduzca su correo" required>
             </div>
 
-            <!-- ContraseÃ±a -->
-            <div class="mb-3">
-                <input type="password" id="password" name="password" class="form-control" placeholder="Introduce la contraseña" required>
-            </div>
-
-            <!-- BotÃ³n de iniciar sesión -->
-            <button type="submit" class="btn btn-dark w-100">Iniciar Sesión</button>
+            <!-- Boton de mandar correo -->
+            <button type="submit" class="btn btn-dark w-100">Enviar recuperación</button>
         </form>
 
         <!-- Enlaces adicionales -->
-         <div class="text-center mt-3">
-            <p><a href="recuperarContrasenaUsuario.jsp">¿Olvidaste tu contraseña?</a></p>
-        </div>
+        
         <div class="text-center mt-3">
-            <p>¿No estas suscrito? <a href="registrarseUsuario.jsp">Suscribete ya</a></p>
-        </div>
             <p><a href="index.jsp">Volver al menú</a></p>
+        </div>
 
         <!-- Contenedor para mostrar mensajes de resultado -->
         <div id="result" class="text-center mt-3 text-danger"></div>
