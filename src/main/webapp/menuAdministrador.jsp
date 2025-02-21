@@ -1,5 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="jakarta.servlet.http.HttpSession" %>
+<%@ page import="java.io.IOException" %>
+
+<%
+    // Obtener la sesión y verificar el rol
+    HttpSession sesion = request.getSession(false);
+    String rol = (sesion != null) ? (String) sesion.getAttribute("rol") : null;
+
+    if (rol == null || !"admin".equals(rol)) {
+        out.print("<h2>Error: No tienes permiso para acceder a este sitio.</h2>");
+        return;
+    }
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,7 +105,6 @@
                        <button type="submit" class="btn btn-danger mt-3">Eliminar Usuario</button>
                    </form>
                </div>
-              
                <!-- Contenedor de resultados -->
                <div class="mt-4">
                    <h3>Resultado:</h3>

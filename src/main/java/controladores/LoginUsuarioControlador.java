@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Controlador para manejar el inicio de sesión de un usuario.
@@ -71,6 +72,8 @@ public class LoginUsuarioControlador extends HttpServlet {
         if (isValidUser) {
             // Lógica para manejar el rol y redirigir
             String rol = servicio.getRol(); // Obtener el rol del usuario
+            HttpSession session = request.getSession();
+            session.setAttribute("rol", rol); // Guardar el rol en sesión
             System.out.println("Rol del usuario: " + rol);
             if ("admin".equals(rol)) {
                 // Redirigir al panel de administración
@@ -78,13 +81,17 @@ public class LoginUsuarioControlador extends HttpServlet {
             } else if ("usuario".equals(rol)) {
                 // Redirigir al panel de usuario
                 response.sendRedirect("index.jsp");
+                
+                /*
+                //Metodo que envie correo al usuario
                 EmailServicio rc = new EmailServicio();
                 try {
-					rc.enviarCorreo("guasonrevelde@gmail.com", "Asunto", "Mensaje");
+					rc.enviarCorreo("guasonrevelde@gmail.com", "Inicio", "Se ha iniciado sesion en la cuenta");
 				} catch (MessagingException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+                */
             } else {
                 // Rol desconocido
                 request.setAttribute("errorMessage", "Rol desconocido.");
