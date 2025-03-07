@@ -9,9 +9,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import Dtos.RegistroUsuarioDto;
 
 /**
- * Servicio para manejar el registro de usuarios y clubes.
+ * Servicio para manejar el registro de usuarios
  * <p>
- * Este servicio se comunica con una API externa para registrar usuarios y clubes,
+ * Este servicio se comunica con una API externa para registrar usuarios,
  * enviando sus datos a través de solicitudes HTTP POST. Utiliza objetos DTO para
  * representar los datos a registrar y convertirlos en formato JSON.
  * </p>

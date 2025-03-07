@@ -11,11 +11,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import Dtos.ModificarUsuarioDto;
 
 /**
- * Servicio para manejar la modificación de usuarios y clubes.
+ * Servicio para manejar la modificación de usuarios
  * <p>
  * Este servicio se comunica con una API externa para realizar solicitudes
- * HTTP PUT que modifican usuarios o clubes específicos. También incluye
- * métodos para obtener la información de un usuario o club por su ID.
+ * HTTP PUT que modifican usuarios específicos. También incluye
+ * métodos para obtener la información de un usuario por su ID.
  * </p>
  */
 public class ModificarServicio {
@@ -24,19 +24,18 @@ public class ModificarServicio {
      * Modifica la información de un usuario.
      * <p>
      * Este método envía una solicitud HTTP PUT para modificar los datos de un
-     * usuario específico, como nombre, DNI, teléfono, rol y foto. La información
+     * usuario específico, como nombre, teléfono, rol y foto. La información
      * es enviada como parte de un cuerpo `multipart/form-data`.
      * </p>
      * 
      * @param idUsuario     el ID del usuario a modificar.
      * @param nuevoNombre   el nuevo nombre del usuario.
-     * @param nuevoDni      el nuevo DNI del usuario.
      * @param nuevoTelefono el nuevo número de teléfono del usuario.
      * @param nuevoRol      el nuevo rol del usuario.
      * @param nuevaFoto     los bytes de la nueva foto del usuario.
      * @return un mensaje indicando el resultado de la operación.
      */
-    public String modificarUsuario(long idUsuario, String nuevoNombre, String nuevoDni, String nuevoTelefono, String nuevoRol, byte[] nuevaFoto) {
+    public String modificarUsuario(long idUsuario, String nuevoNombre, String nuevoTelefono, String nuevoRol, byte[] nuevaFoto) {
         String boundary = "*****" + System.currentTimeMillis() + "*****"; // Límite para multipart
         try {
             URL url = new URL("http://localhost:8081/api/modificar/modificarUsuario/" + idUsuario);
@@ -53,13 +52,6 @@ public class ModificarServicio {
                 dos.writeBytes("--" + boundary + "\r\n");
                 dos.writeBytes("Content-Disposition: form-data; name=\"nuevoNombre\"\r\n\r\n");
                 dos.writeBytes(nuevoNombre + "\r\n");
-            }
-
-            // Campo nuevoDni
-            if (nuevoDni != null) {
-                dos.writeBytes("--" + boundary + "\r\n");
-                dos.writeBytes("Content-Disposition: form-data; name=\"nuevoDni\"\r\n\r\n");
-                dos.writeBytes(nuevoDni + "\r\n");
             }
 
             // Campo nuevoTelefono
@@ -149,5 +141,7 @@ public class ModificarServicio {
             return null;
         }
     }
+
+	
 
 }

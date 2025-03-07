@@ -11,7 +11,6 @@ public class ModificarUsuarioDto {
 
     private long idUsuario;
     private String nombreUsuario;
-    private String dniUsuario;
     private String telefonoUsuario;
     private String rol;
 
@@ -31,14 +30,6 @@ public class ModificarUsuarioDto {
 
     public void setNombreUsuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
-    }
-
-    public String getDniUsuario() {
-        return dniUsuario;
-    }
-
-    public void setDniUsuario(String dniUsuario) {
-        this.dniUsuario = dniUsuario;
     }
 
     public String getTelefonoUsuario() {

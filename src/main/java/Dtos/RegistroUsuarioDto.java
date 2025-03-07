@@ -13,7 +13,6 @@ public class RegistroUsuarioDto {
     private long idUsuario;
     private String nicknameUsuario;
     private String nombreUsuario;
-    private String dniUsuario;
     private String telefonoUsuario;
     private String emailUsuario;
     private String passwordUsuario;
@@ -43,14 +42,6 @@ public class RegistroUsuarioDto {
 
     public void setNombreUsuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
-    }
-
-    public String getDniUsuario() {
-        return dniUsuario;
-    }
-
-    public void setDniUsuario(String dniUsuario) {
-        this.dniUsuario = dniUsuario;
     }
 
     public String getTelefonoUsuario() {

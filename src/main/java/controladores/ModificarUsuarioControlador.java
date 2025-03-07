@@ -15,7 +15,7 @@ import jakarta.servlet.http.Part;
  * Controlador para manejar la modificación de un usuario.
  * <p>
  * Este servlet procesa solicitudes HTTP POST para modificar la información de un usuario,
- * incluyendo su nombre, DNI, teléfono, rol y foto, utilizando un servicio específico.
+ * incluyendo su nombre, teléfono, rol y foto, utilizando un servicio específico.
  * </p>
  * <p>
  * Soporta la subida de archivos utilizando la anotación {@link MultipartConfig}.
@@ -48,7 +48,7 @@ public class ModificarUsuarioControlador extends HttpServlet {
      * Procesa las solicitudes HTTP POST para modificar un usuario.
      * <p>
      * Este método recoge los datos enviados desde el formulario, incluyendo el ID del usuario,
-     * el nuevo nombre, DNI, teléfono, rol y foto. Llama al servicio para realizar la
+     * el nuevo nombre, teléfono, rol y foto. Llama al servicio para realizar la
      * modificación y redirige al usuario a la página de menú del administrador
      * con un mensaje de resultado.
      * </p>
@@ -67,7 +67,6 @@ public class ModificarUsuarioControlador extends HttpServlet {
             // Recuperar parámetros del formulario
             long idUsuario = Long.parseLong(request.getParameter("idUsuario"));
             String nuevoNombre = request.getParameter("nuevoNombre");
-            String nuevoDni = request.getParameter("nuevoDni");
             String nuevoTelefono = request.getParameter("nuevoTelefono");
             String nuevoRol = request.getParameter("nuevoRol");
 
@@ -81,7 +80,7 @@ public class ModificarUsuarioControlador extends HttpServlet {
 
             // Llamar al servicio API
             String resultado = modificarServicio.modificarUsuario(
-                    idUsuario, nuevoNombre, nuevoDni, nuevoTelefono, nuevoRol, nuevaFoto);
+                    idUsuario, nuevoNombre, nuevoTelefono, nuevoRol, nuevaFoto);
 
             // Redirigir con el resultado
             request.setAttribute("resultado", resultado);

@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import Dtos.LoginUsuarioDto;
 
 /**
- * Servicio para manejar la autenticación de usuarios y clubes.
+ * Servicio para manejar la autenticación de usuarios
  * <p>
  * Este servicio se comunica con una API externa para verificar credenciales
  * de inicio de sesión y determina el rol del usuario o del club.
@@ -20,7 +20,7 @@ import Dtos.LoginUsuarioDto;
 public class AutentificacionServicio {
 
     /**
-     * Almacena el rol del usuario o club autenticado.
+     * Almacena el rol del usuario autenticado.
      */
     private String rol = "";
 
@@ -92,18 +92,6 @@ public class AutentificacionServicio {
 
         return todoOk;
     }
-
-    /**
-     * Verifica las credenciales de un club llamando a la API correspondiente.
-     * <p>
-     * Si las credenciales son válidas, el rol del club ("club") se guarda y el método
-     * devuelve {@code true}.
-     * </p>
-     * 
-     * @param correo   el correo electrónico del club.
-     * @param password la contraseña del club.
-     * @return {@code true} si las credenciales son válidas; {@code false} en caso contrario.
-     */
    
 
     /**

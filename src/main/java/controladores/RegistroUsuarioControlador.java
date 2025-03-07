@@ -71,7 +71,6 @@ public class RegistroUsuarioControlador extends HttpServlet {
         RegistroUsuarioDto registroDto = new RegistroUsuarioDto();
         registroDto.setNicknameUsuario(nickname);
         registroDto.setNombreUsuario(nombre);
-        registroDto.setDniUsuario(dni);
         registroDto.setTelefonoUsuario(telefono);
         registroDto.setEmailUsuario(correo);
         registroDto.setPasswordUsuario(password);

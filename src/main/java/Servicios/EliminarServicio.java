@@ -5,10 +5,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Servicio para manejar la eliminación de usuarios y clubes.
+ * Servicio para manejar la eliminación de usuarios
  * <p>
  * Este servicio se comunica con una API externa para realizar solicitudes
- * HTTP DELETE que eliminan usuarios o clubes específicos.
+ * HTTP DELETE que eliminan usuarios específicos.
  * </p>
  */
 public class EliminarServicio {
