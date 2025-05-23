@@ -1,4 +1,4 @@
-package Servicios;
+package servicios;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -8,7 +8,7 @@ import java.net.URL;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import Dtos.LoginUsuarioDto;
+import dtos.LoginUsuarioDto;
 
 /**
  * Servicio para manejar la autenticación de usuarios

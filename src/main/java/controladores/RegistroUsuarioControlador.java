@@ -2,8 +2,10 @@ package controladores;
 
 import java.io.IOException;
 
-import Dtos.RegistroUsuarioDto;
-import Servicios.RegistroServicio;
+import dtos.RegistroUsuarioDto;
+import servicios.EmailServicio;
+import servicios.RegistroServicio;
+import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -79,8 +81,9 @@ public class RegistroUsuarioControlador extends HttpServlet {
         boolean registroExitoso = registroServicio.registrarUsuario(registroDto);
 
         if (registroExitoso) {
-            // Registro exitoso, redirigir a la página de inicio o login
-            response.sendRedirect("iniciarSesionUsuario.jsp");
+            // Registro exitoso, redirigir a verificacion.jsp
+            response.sendRedirect("verificacion.jsp?email=" + correo);
+            System.out.println("Registro exitoso, esperando validacion");
         } else {
             // Si el registro falló (correo ya existente), mostrar un mensaje de error
             request.setAttribute("errorMessage", "El correo ya está registrado.");

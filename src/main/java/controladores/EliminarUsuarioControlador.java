@@ -2,7 +2,7 @@ package controladores;
 
 import java.io.IOException;
 
-import Servicios.EliminarServicio;
+import servicios.EliminarServicio;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

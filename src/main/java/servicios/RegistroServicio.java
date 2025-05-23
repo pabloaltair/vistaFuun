@@ -1,4 +1,4 @@
-package Servicios;
+package servicios;
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -6,7 +6,8 @@ import java.net.URL;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import Dtos.RegistroUsuarioDto;
+import dtos.RegistroUsuarioDto;
+import jakarta.mail.MessagingException;
 
 /**
  * Servicio para manejar el registro de usuarios
@@ -55,6 +56,30 @@ public class RegistroServicio {
             if (responseCode == HttpURLConnection.HTTP_CREATED) { // 201 Created
                 // Si el usuario se creó correctamente
                 registroExitoso = true;
+                
+             // Método que envía un correo al usuario para verificar su cuenta 
+                EmailServicio rc = new EmailServicio();
+                try {
+                	rc.enviarCorreo(
+                		    registroDto.getEmailUsuario(),
+                		    "Bienvenido a El Diario Fuun – Confirma tu suscripción",
+                		    "¡Hola " + registroDto.getNombreUsuario() + "!\n\n" +
+                		    "Te damos la bienvenida a *El Diario Fuun*, tu nueva fuente confiable de noticias, análisis y actualidad.\n\n" +
+                		    "Para completar tu suscripción y comenzar a recibir nuestras noticias, necesitamos verificar tu dirección de correo electrónico.\n\n" +
+                		    "Haz clic en el siguiente enlace para confirmar tu cuenta:\n\n" +
+                		    "enlace\n\n" +
+                		    "Una vez confirmada, tendrás acceso a contenido exclusivo, notificaciones personalizadas y mucho más.\n\n" +
+                		    "Si no solicitaste esta suscripción, simplemente ignora este mensaje. Tus datos no serán guardados hasta que verifiques tu cuenta.\n\n" +
+                		    "Gracias por unirte a nuestra comunidad informada.\n\n" +
+                		    "Atentamente,\n" +
+                		    "El equipo de El Diario Fuun"
+                		);
+
+                } catch (MessagingException e) {
+                    e.printStackTrace();
+                }
+
+                
             } else if (responseCode == HttpURLConnection.HTTP_CONFLICT) { // 409 Conflict
                 // Si hubo un conflicto, como correo duplicado
                 System.out.println("Error: El correo ya está registrado.");

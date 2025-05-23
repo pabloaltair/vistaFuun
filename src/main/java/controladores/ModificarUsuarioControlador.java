@@ -2,7 +2,7 @@ package controladores;
 
 import java.io.IOException;
 
-import Servicios.ModificarServicio;
+import servicios.ModificarServicio;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;

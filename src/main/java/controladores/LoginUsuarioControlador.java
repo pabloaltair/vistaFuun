@@ -2,8 +2,8 @@ package controladores;
 
 import java.io.IOException;
 
-import Servicios.AutentificacionServicio;
-import Servicios.EmailServicio;
+import servicios.AutentificacionServicio;
+import servicios.EmailServicio;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -82,16 +82,6 @@ public class LoginUsuarioControlador extends HttpServlet {
                 // Redirigir al panel de usuario
                 response.sendRedirect("index.jsp");
                 
-                /*
-                //Metodo que envie correo al usuario
-                EmailServicio rc = new EmailServicio();
-                try {
-					rc.enviarCorreo("guasonrevelde@gmail.com", "Inicio", "Se ha iniciado sesion en la cuenta");
-				} catch (MessagingException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-                */
             } else {
                 // Rol desconocido
                 request.setAttribute("errorMessage", "Rol desconocido.");
