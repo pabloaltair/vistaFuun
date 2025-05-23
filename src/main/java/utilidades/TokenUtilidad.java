@@ -5,40 +5,42 @@ import java.util.Base64;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import dtos.RegistroUsuarioDto;
+
 /**
  * Utilidad para generación y gestión de tokens de verificación temporales.
  * Esta clase es reutilizable para múltiples flujos que requieran confirmación por token.
  */
 public class TokenUtilidad {
 
-    // Mapa temporal para asociar tokens a correos o identificadores únicos
-    private static final Map<String, String> tokenUsuarioMap = new ConcurrentHashMap<>();
+    // Mapa temporal para asociar tokens a objetos RegistroUsuarioDto completos
+    private static final Map<String, RegistroUsuarioDto> tokenUsuarioMap = new ConcurrentHashMap<>();
     private static final SecureRandom secureRandom = new SecureRandom();
     private static final Base64.Encoder base64Encoder = Base64.getUrlEncoder().withoutPadding();
 
     /**
-     * Genera un token aleatorio y lo asocia a un usuario (por su correo electrónico).
+     * Genera un token aleatorio y lo asocia a un usuario (por su DTO completo).
      * 
-     * @param emailUsuario el correo del usuario a quien se le genera el token.
+     * @param usuario el DTO completo del usuario al que se le genera el token.
      * @return el token generado.
      */
-    public static String generarYAsignarToken(String emailUsuario) {
+    public static String generarYAsignarToken(RegistroUsuarioDto usuario) {
         byte[] randomBytes = new byte[24];
         secureRandom.nextBytes(randomBytes);
         String token = base64Encoder.encodeToString(randomBytes);
 
-        // Asociar token temporalmente al usuario
-        tokenUsuarioMap.put(token, emailUsuario);
+        // Asociar token temporalmente al DTO usuario
+        tokenUsuarioMap.put(token, usuario);
         return token;
     }
 
     /**
-     * Verifica si el token recibido es válido y devuelve el email asociado si lo es.
+     * Verifica si el token recibido es válido y devuelve el DTO usuario asociado si lo es.
      * 
      * @param token el token a validar.
-     * @return el email del usuario si el token es válido; null si no lo es.
+     * @return el DTO RegistroUsuarioDto si el token es válido; null si no lo es.
      */
-    public static String validarToken(String token) {
+    public static RegistroUsuarioDto validarToken(String token) {
         return tokenUsuarioMap.get(token);
     }
 
@@ -59,6 +61,6 @@ public class TokenUtilidad {
      */
     public static String generarEnlaceVerificacion(String token) {
         // Esta URL debe coincidir con tu ruta para validar el token
-        return "http://localhost:8080/verificarCuenta?token=" + token;
+        return "http://localhost:8080/vistaFuun/verificarCuenta?token=" + token;
     }
 }

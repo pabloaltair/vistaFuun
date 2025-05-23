@@ -68,7 +68,14 @@
         </div>
 
         <!-- Contenedor de mensajes de resultado -->
-        <div id="result" class="text-center mt-3 text-danger"></div>
+		<div id="result" class="text-center mt-3 text-danger">
+		    <%-- Mostrar error si se envió desde el servlet con errorMessage --%>
+		    <% String errorMessage = (String) request.getAttribute("errorMessage");
+		       if (errorMessage != null) { %>
+		        <p class="error"><%= errorMessage %></p>
+		    <% } %>
+		</div>
+
     </div>
 </body>
 
