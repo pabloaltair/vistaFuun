@@ -16,9 +16,9 @@ import jakarta.servlet.http.Part;
  */
 @WebServlet("/modificarUsuario")
 @MultipartConfig(
-    fileSizeThreshold = 1024 * 1024 * 2,   // 2MB
-    maxFileSize = 1024 * 1024 * 10,        // 10MB
-    maxRequestSize = 1024 * 1024 * 50      // 50MB
+        fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+        maxFileSize = 1024 * 1024 * 10,      // 10MB
+        maxRequestSize = 1024 * 1024 * 50    // 50MB
 )
 public class ModificarUsuarioControlador extends HttpServlet {
 
@@ -40,27 +40,22 @@ public class ModificarUsuarioControlador extends HttpServlet {
 
             Part fotoPart = request.getPart("nuevaFoto");
             byte[] nuevaFoto = null;
+
             if (fotoPart != null && fotoPart.getSize() > 0) {
                 nuevaFoto = fotoPart.getInputStream().readAllBytes();
             }
 
-            String resultado = modificarServicio.modificarUsuario(idUsuario, nuevoNombre, nuevoTelefono, nuevoRol, nuevaFoto);
+            String resultado = modificarServicio.modificarUsuario(
+                    idUsuario, nuevoNombre, nuevoTelefono, nuevoRol, nuevaFoto);
 
-            // Detectar si el resultado es un error para asignar el mensaje correcto
-            if (resultado.toLowerCase().contains("error") || resultado.toLowerCase().contains("código de respuesta")) {
-                request.setAttribute("errorMessage", resultado);   // cambia errorMensaje por errorMessage
-            } else {
-                request.setAttribute("successMessage", resultado); // cambia successMensaje por successMessage
-            }
-
+            request.setAttribute("successMensaje", resultado);
         } catch (NumberFormatException e) {
             e.printStackTrace();
-            request.setAttribute("errorMessage", "ID de usuario inválido.");
+            request.setAttribute("errorMensaje", "ID de usuario inválido.");
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("errorMessage", "Error al modificar el usuario: " + e.getMessage());
+            request.setAttribute("errorMensaje", "Error al modificar el usuario: " + e.getMessage());
         }
-
 
         request.getRequestDispatcher("menuAdministrador.jsp").forward(request, response);
     }

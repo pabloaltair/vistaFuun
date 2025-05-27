@@ -22,7 +22,7 @@
                     String email = (String) session.getAttribute("email");
                     if (email != null) {
                 %>
-                    <a href="cuentaUsuario.jsp" class="me-3">Cuenta</a>
+                    <a href="mantenimiento.jsp" class="me-3">Cuenta</a>
                     <a href="logout" class="">Cerrar sesión</a>
                 <%
                     } else {
