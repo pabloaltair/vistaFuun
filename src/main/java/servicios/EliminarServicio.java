@@ -11,11 +11,6 @@ public class EliminarServicio {
 
     private final ListaUsuarioServicio listaServicio = new ListaUsuarioServicio();
 
-    /**
-     * Intenta eliminar un usuario, bloqueando si es el último admin.
-     * @param idUsuario ID del usuario a eliminar
-     * @return mensaje resultado
-     */
     public String eliminarUsuario(long idUsuario) {
         List<ListaUsuarioDto> usuarios = listaServicio.obtenerUsuarios();
 
