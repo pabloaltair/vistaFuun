@@ -59,7 +59,13 @@ public class RestablecerContrasenaControlador extends HttpServlet {
         if (actualizado) {
             TokenUtilidad.eliminarTokenRecuperacion(token);
             System.out.println("[INFO] Contraseña actualizada correctamente para el usuario: " + dto.getEmailUsuario());
-            response.sendRedirect("contrasenaRestablecida.jsp");
+
+            // Enviar mensaje y redirección controlada por JSP
+            request.setAttribute("mensaje", "¡Contraseña restablecida exitosamente!");
+            request.setAttribute("tiempoEspera", 10); // segundos
+            request.setAttribute("urlRedireccion", "login.jsp"); // Cambia a la ruta real de tu login
+
+            request.getRequestDispatcher("mensajeConRedireccion.jsp").forward(request, response);
         } else {
             System.out.println("[ERROR] No se pudo actualizar la contraseña para el usuario: " + dto.getEmailUsuario());
             request.setAttribute("errorMessage", "No se pudo actualizar la contraseña.");
