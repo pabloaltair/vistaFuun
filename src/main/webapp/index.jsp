@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" session="true" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -18,8 +18,20 @@
             </div>
             <img width="148" height="118" src="imagenes/logo.png" alt="Logo Fuun" class="img-fluid">
             <div>
-                <a href="iniciarSesionUsuario.jsp" class="me-3">Iniciar Sesion</a>
-                <a href="registrarseUsuario.jsp">Suscribirse</a>
+                <%
+                    String email = (String) session.getAttribute("email");
+                    if (email != null) {
+                %>
+                    <a href="cuentaUsuario.jsp" class="me-3">Cuenta</a>
+                    <a href="logout" class="">Cerrar sesión</a>
+                <%
+                    } else {
+                %>
+                    <a href="iniciarSesionUsuario.jsp" class="me-3">Iniciar Sesión</a>
+                    <a href="registrarseUsuario.jsp">Suscribirse</a>
+                <%
+                    }
+                %>
             </div>
         </div>
     </header>

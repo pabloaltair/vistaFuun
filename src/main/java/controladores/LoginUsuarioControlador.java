@@ -73,6 +73,7 @@ public class LoginUsuarioControlador extends HttpServlet {
                 String rol = servicio.getRol(); // Obtener el rol del usuario
                 HttpSession session = request.getSession();
                 session.setAttribute("rol", rol); // Guardar el rol en sesión
+                session.setAttribute("email", correo);  // <-- Guarda el email también para poder mostrarlo después
                 System.out.println("Rol del usuario: " + rol);
                 if ("admin".equals(rol)) {
                     // Redirigir al panel de administración
