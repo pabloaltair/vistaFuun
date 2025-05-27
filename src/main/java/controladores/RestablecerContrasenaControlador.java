@@ -53,6 +53,15 @@ public class RestablecerContrasenaControlador extends HttpServlet {
             return;
         }
 
+        // Validación para que la nueva contraseña no sea igual a la actual
+        boolean esIgual = servicio.esContrasenaIgualActual(dto.getEmailUsuario(), nuevaPassword);
+        if (esIgual) {
+            System.out.println("[ERROR] La nueva contraseña es igual a la actual para el usuario: " + dto.getEmailUsuario());
+            request.setAttribute("errorMessage", "La nueva contraseña no puede ser igual a la contraseña actual. Por favor, cambia la contraseña por una nueva.");
+            request.getRequestDispatcher("restablecerContrasena.jsp?token=" + token).forward(request, response);
+            return;
+        }
+
         dto.setNuevaPassword(nuevaPassword);
         boolean actualizado = servicio.actualizarContrasena(dto);
 
