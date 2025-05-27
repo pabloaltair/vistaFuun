@@ -54,37 +54,47 @@
     <div class="table-responsive">
         <table class="table table-bordered table-striped text-center align-middle">
             <thead class="table-dark">
-                <tr>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Teléfono</th>
-                    <th>Rol</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <%
-                    for (ListaUsuarioDto usuario : listaUsuarios) {
-                        int idUsuario = usuario.getIdUsuario();
-                %>
-                <tr>
-                    <td><%= usuario.getNombreUsuario() %></td>
-                    <td><%= usuario.getEmailUsuario() %></td>
-                    <td><%= usuario.getTelefonoUsuario() %></td>
-                    <td><%= usuario.getRol() %></td>
-                    <td>
-                        <button class="btn btn-warning btn-sm me-1"
-                                onclick="llenarFormularioModificar('<%= idUsuario %>', '<%= usuario.getNombreUsuario() %>', '<%= usuario.getTelefonoUsuario() %>', '<%= usuario.getRol() %>')"
-                                data-bs-toggle="modal" data-bs-target="#modalModificar">Modificar</button>
-                        <button class="btn btn-danger btn-sm"
-                                onclick="confirmarEliminacion('<%= idUsuario %>')"
-                                data-bs-toggle="modal" data-bs-target="#modalEliminar">Eliminar</button>
-                    </td>
-                </tr>
-                <%
-                    }
-                %>
-            </tbody>
+    <tr>
+        <th>Foto</th> <!-- NUEVA COLUMNA -->
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Rol</th>
+        <th>Acciones</th>
+    </tr>
+</thead>
+<tbody>
+    <%
+        for (ListaUsuarioDto usuario : listaUsuarios) {
+            int idUsuario = usuario.getIdUsuario();
+            String base64Foto = usuario.getFotoUsuario();
+    %>
+    <tr>
+        <td>
+            <% if (base64Foto != null && !base64Foto.trim().isEmpty()) { %>
+                <img src="data:image/jpeg;base64,<%= base64Foto %>" width="60" height="60" style="object-fit: cover; border-radius: 50%;" />
+            <% } else { %>
+                <span class="text-muted">Sin foto</span>
+            <% } %>
+        </td>
+        <td><%= usuario.getNombreUsuario() %></td>
+        <td><%= usuario.getEmailUsuario() %></td>
+        <td><%= usuario.getTelefonoUsuario() %></td>
+        <td><%= usuario.getRol() %></td>
+        <td>
+            <button class="btn btn-warning btn-sm me-1"
+                    onclick="llenarFormularioModificar('<%= idUsuario %>', '<%= usuario.getNombreUsuario() %>', '<%= usuario.getTelefonoUsuario() %>', '<%= usuario.getRol() %>')"
+                    data-bs-toggle="modal" data-bs-target="#modalModificar">Modificar</button>
+            <button class="btn btn-danger btn-sm"
+                    onclick="confirmarEliminacion('<%= idUsuario %>')"
+                    data-bs-toggle="modal" data-bs-target="#modalEliminar">Eliminar</button>
+        </td>
+    </tr>
+    <%
+        }
+    %>
+</tbody>
+
         </table>
     </div>
 
