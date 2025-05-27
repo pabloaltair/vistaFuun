@@ -47,7 +47,16 @@
         </div>
 
         <!-- Contenedor para mostrar mensajes de resultado -->
-        <div id="result" class="text-center mt-3 text-danger"></div>
+        <div id="result" class="text-center mt-3 text-danger">
+        <!-- Contenedor para mostrar mensajes de resultado -->
+		<div id="result" class="text-center mt-3 text-danger">
+		    <% String errorMessage = (String) request.getAttribute("errorMessage");
+		       if (errorMessage != null) { %>
+		        <p class="error"><%= errorMessage %></p>
+		    <% } %>
+		</div>
+        
+        </div>
     </div>
 
     <!-- Incluyendo el archivo de JavaScript -->

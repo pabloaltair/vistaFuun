@@ -6,9 +6,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import servicios.EmailServicio;
 import servicios.RegistroServicio;
 import utilidades.TokenUtilidad;
+import utilidades.EmailUtilidad;
 
 import java.io.IOException;
 import jakarta.mail.MessagingException;
@@ -47,7 +47,7 @@ public class VerificarCuentaControlador extends HttpServlet {
             if (creado) {
                 // Enviar correo de confirmación
                 try {
-                    EmailServicio emailServicio = new EmailServicio();
+                    EmailUtilidad emailServicio = new EmailUtilidad();
                     String asunto = "¡Cuenta verificada con éxito!";
                     String cuerpo = "Hola " + usuarioTemporal.getNombreUsuario() + ",\n\n" +
                             "Tu cuenta en *El Diario Fuun* ha sido verificada exitosamente.\n\n" +

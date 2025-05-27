@@ -3,7 +3,7 @@ package controladores;
 import java.io.IOException;
 
 import servicios.AutentificacionServicio;
-import servicios.EmailServicio;
+import utilidades.EmailUtilidad;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

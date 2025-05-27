@@ -1,11 +1,11 @@
-package servicios;
+package utilidades;
 
 	import jakarta.mail.*;
 	import jakarta.mail.internet.InternetAddress;
 	import jakarta.mail.internet.MimeMessage;
 	import java.util.Properties;
 	
-public class EmailServicio {
+public class EmailUtilidad {
 
 	    private static final String REMITENTE = "fuunnewsandtrends@gmail.com";
 	    private static final String CONTRASENA = "bghatrceueovwklm";

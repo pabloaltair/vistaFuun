@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import dtos.RegistroUsuarioDto;
 import jakarta.mail.MessagingException;
+import utilidades.EmailUtilidad;
 import utilidades.TokenUtilidad;
 
 public class RegistroServicio {
@@ -24,7 +25,7 @@ public class RegistroServicio {
             String enlaceVerificacion = TokenUtilidad.generarEnlaceVerificacion(token);
 
             // Enviar correo
-            EmailServicio emailServicio = new EmailServicio();
+            EmailUtilidad emailServicio = new EmailUtilidad();
             String asunto = "Bienvenido a El Diario Fuun – Confirma tu suscripción";
             String cuerpo = "¡Hola " + registroDto.getNombreUsuario() + "!\n\n" +
                     "Te damos la bienvenida a *El Diario Fuun*, tu fuente confiable de noticias.\n\n" +
