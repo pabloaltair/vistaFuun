@@ -47,7 +47,7 @@
 
         <!-- Enlaces adicionales -->
          <div class="text-center mt-3">
-            <p><a href="recuperarContrasenaUsuario.jsp">¿Olvidaste tu contraseña?</a></p>
+            <p><a href="recuperarContrasena.jsp">¿Olvidaste tu contraseña?</a></p>
         </div>
         <div class="text-center mt-3">
             <p>¿No estas suscrito? <a href="registrarseUsuario.jsp">Suscribete ya</a></p>
