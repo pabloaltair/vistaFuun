@@ -3,8 +3,6 @@ package controladores;
 import java.io.IOException;
 
 import servicios.AutentificacionServicio;
-import utilidades.EmailUtilidad;
-import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -64,33 +62,44 @@ public class LoginUsuarioControlador extends HttpServlet {
         System.out.println("Correo recibido: " + correo);
         System.out.println("Contraseña recibida: " + password);
 
-        // Llamar al servicio para verificar el usuario
-        boolean isValidUser = servicio.verificarUsuario(correo, password);
+        try {
+            // Llamar al servicio para verificar el usuario
+            boolean isValidUser = servicio.verificarUsuario(correo, password);
 
-        System.out.println("isValidUser: " + isValidUser);
+            System.out.println("isValidUser: " + isValidUser);
 
-        if (isValidUser) {
-            // Lógica para manejar el rol y redirigir
-            String rol = servicio.getRol(); // Obtener el rol del usuario
-            HttpSession session = request.getSession();
-            session.setAttribute("rol", rol); // Guardar el rol en sesión
-            System.out.println("Rol del usuario: " + rol);
-            if ("admin".equals(rol)) {
-                // Redirigir al panel de administración
-                response.sendRedirect("menuAdministrador.jsp");
-            } else if ("usuario".equals(rol)) {
-                // Redirigir al panel de usuario
-                response.sendRedirect("index.jsp");
-                
+            if (isValidUser) {
+                // Lógica para manejar el rol y redirigir
+                String rol = servicio.getRol(); // Obtener el rol del usuario
+                HttpSession session = request.getSession();
+                session.setAttribute("rol", rol); // Guardar el rol en sesión
+                System.out.println("Rol del usuario: " + rol);
+                if ("admin".equals(rol)) {
+                    // Redirigir al panel de administración
+                    response.sendRedirect("menuAdministrador.jsp");
+                } else if ("usuario".equals(rol)) {
+                    // Redirigir al panel de usuario
+                    response.sendRedirect("index.jsp");
+                } else {
+                    // Rol desconocido
+                    String error = "Rol desconocido.";
+                    System.out.println("ERROR: " + error);
+                    request.setAttribute("errorMessage", error);
+                    request.getRequestDispatcher("iniciarSesionUsuario.jsp").forward(request, response);
+                }
             } else {
-                // Rol desconocido
-                request.setAttribute("errorMessage", "Rol desconocido.");
-                request.getRequestDispatcher("iniciarSesionUsuario.jsp").forward(request, response);
+                // Enviar un mensaje de error
+                String error = "Email o contraseña incorrectos.";
+                System.out.println("ERROR: " + error);
+                request.setAttribute("errorMessage", error);
+                request.getRequestDispatcher("iniciarSesionUsuario.jsp").forward(request, response); // Redirigir de vuelta al formulario
             }
-        } else {
-            // Enviar un mensaje de error
-            request.setAttribute("errorMessage", "Email o contraseña incorrectos.");
-            request.getRequestDispatcher("iniciarSesionUsuario.jsp").forward(request, response); // Redirigir de vuelta al formulario
+        } catch (Exception e) {
+            String error = "Error interno en la autenticación: " + e.getMessage();
+            System.out.println("ERROR: " + error);
+            e.printStackTrace();
+            request.setAttribute("errorMessage", error);
+            request.getRequestDispatcher("iniciarSesionUsuario.jsp").forward(request, response);
         }
     }
 }

@@ -78,21 +78,22 @@ public class AutentificacionServicio {
                         this.rol = respuesta;
                         todoOk = true;
                     } else {
-                        System.out.println("Rol desconocido o error en la respuesta.");
+                        String error = "Rol desconocido o error en la respuesta: " + respuesta;
+                        System.out.println("ERROR: " + error);
                     }
                 }
             } else {
-                System.out.println("Error: Código de respuesta no OK. Código: " + responseCode);
+                String error = "Error: Código de respuesta no OK. Código: " + responseCode;
+                System.out.println("ERROR: " + error);
             }
 
         } catch (Exception e) {
-            System.out.println("ERROR: " + e);
+            System.out.println("ERROR: Exception al verificar usuario: " + e);
             e.printStackTrace();
         }
 
         return todoOk;
     }
-   
 
     /**
      * Obtiene el rol asignado al usuario autenticado.

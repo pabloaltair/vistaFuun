@@ -54,8 +54,19 @@
         </div>
             <p><a href="index.jsp">Volver al menú</a></p>
 
-        <!-- Contenedor para mostrar mensajes de resultado -->
-        <div id="result" class="text-center mt-3 text-danger"></div>
+        <div class="text-center mt-3 text-danger">
+            <% String errorMessage = (String) request.getAttribute("errorMessage");
+               if (errorMessage != null) { %>
+                <p class="error"><%= errorMessage %></p>
+            <% } %>
+        </div>
+
+        <div class="text-center mt-3 text-success">
+            <% String successMessage = (String) request.getAttribute("successMessage");
+               if (successMessage != null) { %>
+                <p class="success"><%= successMessage %></p>
+            <% } %>
+        </div>
     </div>
 
     <!-- Incluyendo el archivo de JavaScript -->
